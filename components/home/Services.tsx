@@ -26,11 +26,12 @@ const services = [
     title: 'Education, Employment & Volunteering',
     desc: 'Supporting access to meaningful opportunities in education, work, and community engagement.',
   },
-  {
-    num: '06',
-    title: 'Ofsted Nanny Services',
-    desc: 'Professional, registered nanny placements for families across London, held to the highest care standards.',
-  },
+  // Ofsted Nanny Services — temporarily unavailable
+  // {
+  //   num: '06',
+  //   title: 'Ofsted Nanny Services',
+  //   desc: 'Professional, registered nanny placements for families across London, held to the highest care standards.',
+  // },
 ]
 
 export default function Services() {

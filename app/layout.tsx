@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 import CookieBanner from '@/components/CookieBanner'
 
@@ -19,9 +20,9 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Haven Flow Care | Ofsted Nanny & Supported Living in London',
+  title: 'Haven Flow Care | Supported Living in London',
   description:
-    'Haven Flow Care provides personalised supported living and Ofsted nanny services across London — built on compassion, trust, and a genuine belief in independence.',
+    'Haven Flow Care provides personalised supported living across London — built on compassion, trust, and a genuine belief in independence.',
   metadataBase: new URL('https://www.havenflowcare.co.uk'),
   icons: {
     icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
@@ -68,6 +69,7 @@ export default function RootLayout({
         </a>
         {children}
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   )

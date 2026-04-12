@@ -7,7 +7,7 @@ import Image from 'next/image'
 const navLinks = [
   { label: 'Services', href: '/services' },
   { label: 'About', href: '/about' },
-  { label: 'Nanny Services', href: '/nanny-services' },
+  // { label: 'Nanny Services', href: '/nanny-services' }, // temporarily unavailable
   { label: 'Care Home Staffing', href: '/care-home-staffing' },
   { label: 'Careers', href: '/caregiver-application' },
   { label: 'Contact', href: '/contact' },

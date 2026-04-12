@@ -36,9 +36,8 @@ export default function Hero() {
         </h1>
 
         <p className="animate-fade-up animate-delay-300 mb-12 max-w-[440px] text-[15px] font-light leading-[1.85] text-slate-muted">
-          Haven Flow Care provides personalised supported living and Ofsted nanny services across London —
-          built on compassion, trust, and a genuine belief in every person&apos;s capacity to thrive
-          independently.
+          Haven Flow Care provides personalised supported living across London — built on compassion, trust, and a
+          genuine belief in every person&apos;s capacity to thrive independently.
         </p>
 
         <div className="animate-fade-up animate-delay-400 flex flex-wrap gap-3 sm:gap-4">

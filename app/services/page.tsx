@@ -60,17 +60,18 @@ const services = [
       'Workplace settling-in support',
     ],
   },
-  {
-    num: '06',
-    title: 'Ofsted Nanny Services',
-    desc: `Professional, registered nanny placements for families across London, held to the highest care standards. All our nannies are Ofsted registered, DBS checked, and carefully matched to each family's specific needs and values.`,
-    includes: [
-      'Ofsted-registered nanny placement',
-      'Full DBS and reference checks',
-      'Family compatibility matching',
-      'Ongoing placement support',
-    ],
-  },
+  // Ofsted Nanny Services — temporarily unavailable
+  // {
+  //   num: '06',
+  //   title: 'Ofsted Nanny Services',
+  //   desc: `Professional, registered nanny placements for families across London, held to the highest care standards. All our nannies are Ofsted registered, DBS checked, and carefully matched to each family's specific needs and values.`,
+  //   includes: [
+  //     'Ofsted-registered nanny placement',
+  //     'Full DBS and reference checks',
+  //     'Family compatibility matching',
+  //     'Ongoing placement support',
+  //   ],
+  // },
 ]
 
 export const metadata: Metadata = {

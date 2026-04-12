@@ -29,7 +29,7 @@ const values = [
 
 const commitments = [
   { label: 'Personalised care plans', sub: 'No two plans are ever the same' },
-  { label: 'Ofsted registered nannies', sub: 'London-wide placements' },
+  // { label: 'Ofsted registered nannies', sub: 'London-wide placements' }, // temporarily unavailable
   { label: 'Experienced, vetted team', sub: 'Fully DBS checked' },
   { label: 'Regular review & feedback', sub: 'Care that evolves with you' },
   { label: 'London-based & growing', sub: 'Est. 2024' },
@@ -39,7 +39,7 @@ const commitments = [
 export const metadata: Metadata = {
   title: 'About Haven Flow Care | Compassionate London Care Team',
   description:
-    'Learn about Haven Flow Care, our mission, values, and commitment to personalised supported living and nanny services across London.',
+    'Learn about Haven Flow Care, our mission, values, and commitment to personalised supported living across London.',
   alternates: {
     canonical: '/about',
   },
@@ -73,9 +73,8 @@ export default function AboutPage() {
                 their specific story, goals, and preferences.
               </p>
               <p className="mb-5 text-[15px] font-light leading-[1.85] text-slate-soft">
-                From supported living and independent skills to Ofsted nanny services, everything we do is guided by a
-                belief that good care enhances life — for the individuals we support, their families, and the wider
-                community.
+                From supported living to independent skills, everything we do is guided by a belief that good care
+                enhances life — for the individuals we support, their families, and the wider community.
               </p>
               <p className="text-[15px] font-light leading-[1.85] text-slate-soft">
                 Based in London and growing steadily, we are proud to be a young organisation with deep experience,
@@ -129,8 +128,8 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="mb-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">Our Mission</p>
             <blockquote className="mb-8 font-serif text-3xl font-medium leading-snug text-navy lg:text-4xl">
-              &ldquo;To provide compassionate, high-quality supported living and nanny services that empower individuals
-              to live full, meaningful, and independent lives.&rdquo;
+              &ldquo;To provide compassionate, high-quality supported living that empowers individuals to live full,
+              meaningful, and independent lives.&rdquo;
             </blockquote>
             <p className="text-[15px] font-light leading-[1.85] text-slate-soft">
               This isn&apos;t just a statement on a wall — it&apos;s the standard we hold ourselves to in every home,

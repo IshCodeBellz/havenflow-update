@@ -13,7 +13,7 @@ import {
 
 const enquiryTypes = [
   'Supported living services',
-  'Ofsted nanny placement',
+  // 'Ofsted nanny placement', // temporarily unavailable
   'Refer a client',
   'Caregiver opportunities',
   'General enquiry',

@@ -46,11 +46,11 @@ const roles = [
     type: 'Part-time / Flexible',
     desc: 'Help individuals build confidence and capability in daily life skills — from cooking to community engagement.',
   },
-  {
-    title: 'Ofsted Registered Nanny',
-    type: 'Full-time / Live-in / Live-out',
-    desc: 'Join our nanny placement pool and be matched with London families who value quality childcare.',
-  },
+  // {
+  //   title: 'Ofsted Registered Nanny',
+  //   type: 'Full-time / Live-in / Live-out',
+  //   desc: 'Join our nanny placement pool and be matched with London families who value quality childcare.',
+  // }, // temporarily unavailable
   {
     title: 'Night Support Worker',
     type: 'Night shifts available',

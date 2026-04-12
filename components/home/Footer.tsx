@@ -5,7 +5,7 @@ import Image from 'next/image'
 const navLinks = [
   { label: 'Services', href: '/services' },
   { label: 'About', href: '/about' },
-  { label: 'Nanny Services', href: '/nanny-services' },
+  // { label: 'Nanny Services', href: '/nanny-services' }, // temporarily unavailable
   { label: 'Care Home Staffing', href: '/care-home-staffing' },
   { label: 'Careers', href: '/caregiver-application' },
   { label: 'Contact', href: '/contact' },
@@ -79,8 +79,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-md text-[14px] font-light leading-[1.75] text-slate-muted">
-              A dedicated care service specialising in supported living and Ofsted nanny placements across
-              London. Established 2024.
+              A dedicated care service specialising in supported living across London. Established 2024.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {socialLinks.map((s) => (
