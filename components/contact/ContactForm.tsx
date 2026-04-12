@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
 import {
   btnGhostUnderlineClass,
@@ -25,6 +26,7 @@ export default function ContactForm() {
     phone: '',
     enquiryType: '',
     message: '',
+    newsletter: false,
     website: '',
   })
   const [submitted, setSubmitted] = useState(false)
@@ -35,6 +37,10 @@ export default function ContactForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleNewsletterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, newsletter: e.target.checked })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,6 +68,7 @@ export default function ContactForm() {
         phone: '',
         enquiryType: '',
         message: '',
+        newsletter: false,
         website: '',
       })
     } catch {
@@ -183,6 +190,28 @@ export default function ContactForm() {
           placeholder="Tell us a bit about what you're looking for…"
           className={textareaClass}
         />
+      </div>
+
+      <div className="flex gap-3">
+        <input
+          id="contact-newsletter"
+          type="checkbox"
+          name="newsletter"
+          checked={formData.newsletter}
+          onChange={handleNewsletterChange}
+          className="mt-1 h-4 w-4 shrink-0 rounded border-cream-border text-navy focus:ring-2 focus:ring-rose/40 focus:ring-offset-0"
+        />
+        <label htmlFor="contact-newsletter" className="text-[14px] font-light leading-snug text-slate-soft">
+          I&apos;d like to receive occasional news and updates from Haven Flow Care by email. You can unsubscribe at
+          any time. See our{' '}
+          <Link
+            href="/privacy"
+            className="font-medium text-navy underline decoration-navy/20 underline-offset-2 hover:text-rose hover:decoration-rose/40"
+          >
+            privacy policy
+          </Link>
+          .
+        </label>
       </div>
 
       {submitError ? <p className="text-[13px] font-medium text-rose-dark">{submitError}</p> : null}

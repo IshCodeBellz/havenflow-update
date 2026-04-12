@@ -43,3 +43,16 @@ export function isRateLimited(key: string, maxRequests: number, windowMs: number
 export function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 }
+
+/** Splits a full name for Formspree-style firstName / lastName fields. */
+export function splitFirstLastName(fullName: string): { firstName: string; lastName: string } {
+  const trimmed = fullName.trim()
+  const space = trimmed.indexOf(' ')
+  if (space === -1) {
+    return { firstName: trimmed, lastName: '' }
+  }
+  return {
+    firstName: trimmed.slice(0, space).trim(),
+    lastName: trimmed.slice(space + 1).trim(),
+  }
+}

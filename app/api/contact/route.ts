@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getClientIp, isRateLimited, isValidEmail } from '@/lib/formSubmission'
+import { getClientIp, isRateLimited, isValidEmail, splitFirstLastName } from '@/lib/formSubmission'
 
 type ContactPayload = {
   name?: string
@@ -7,6 +7,7 @@ type ContactPayload = {
   phone?: string
   enquiryType?: string
   message?: string
+  newsletter?: boolean
   website?: string
 }
 
@@ -27,6 +28,7 @@ export async function POST(request: NextRequest) {
   const phone = (body.phone ?? '').trim()
   const enquiryType = (body.enquiryType ?? '').trim()
   const message = (body.message ?? '').trim()
+  const newsletterOptIn = body.newsletter === true
   const website = (body.website ?? '').trim()
 
   // Honeypot: silently accept bot payloads to reduce retried spam traffic.
@@ -53,18 +55,21 @@ export async function POST(request: NextRequest) {
     )
   }
 
+  const { firstName, lastName } = splitFirstLastName(name)
+  const webhookBody: Record<string, string | boolean> = {
+    firstName,
+    lastName,
+    email,
+    comments: message,
+    newsletter: newsletterOptIn,
+  }
+  if (phone) webhookBody.phone = phone
+  if (enquiryType) webhookBody.enquiryType = enquiryType
+
   const upstream = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      source: 'contact-form',
-      submittedAt: new Date().toISOString(),
-      name,
-      email,
-      phone,
-      enquiryType,
-      message,
-    }),
+    body: JSON.stringify(webhookBody),
     cache: 'no-store',
   })
 

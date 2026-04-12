@@ -57,20 +57,20 @@ export async function POST(request: NextRequest) {
     )
   }
 
+  const webhookBody: Record<string, string> = {
+    fullName: name,
+    email,
+    phone,
+    message,
+  }
+  if (experience) webhookBody.experience = experience
+  if (role) webhookBody.role = role
+  if (availability) webhookBody.availability = availability
+
   const upstream = await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      source: 'caregiver-application-form',
-      submittedAt: new Date().toISOString(),
-      name,
-      email,
-      phone,
-      role,
-      experience,
-      availability,
-      message,
-    }),
+    body: JSON.stringify(webhookBody),
     cache: 'no-store',
   })
 
