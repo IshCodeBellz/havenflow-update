@@ -52,50 +52,51 @@ function SocialIcon({ children }: { children: ReactNode }) {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-navy-darker">
-      <div
-        className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-rose/[0.06] blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-navy/[0.5] blur-3xl"
-        aria-hidden
-      />
+    <footer className="bg-cream px-4 pb-6 pt-10 sm:px-6 sm:pb-8 sm:pt-12 lg:px-8">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-navy-darker shadow-[0_24px_64px_-20px_rgba(14,47,84,0.45),0_8px_24px_-12px_rgba(14,47,84,0.2)] sm:rounded-[2.5rem] lg:rounded-[3rem]">
+        <div
+          className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-rose/[0.06] blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-navy/[0.5] blur-3xl"
+          aria-hidden
+        />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-14 sm:px-10 sm:py-16">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5">
-            <Link
-              href="/"
-              className="inline-flex items-center rounded-xl bg-white/95 p-3 shadow-sm ring-1 ring-white/20 transition-shadow duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
-              aria-label="Haven Flow Care home"
-            >
-              <Image
-                src="/havenflow-logo.png"
-                alt="Haven Flow Care"
-                width={395}
-                height={103}
-                className="h-12 w-auto sm:h-14"
-              />
-            </Link>
-            <p className="mt-6 max-w-md text-[14px] font-light leading-[1.75] text-slate-muted">
-              A dedicated care service specialising in supported living across London. Established 2024.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-slate-muted transition-all duration-200 hover:border-rose/35 hover:bg-rose/[0.12] hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
-                >
-                  <SocialIcon>{s.icon}</SocialIcon>
-                </a>
-              ))}
+        <div className="relative px-6 py-14 sm:px-10 sm:py-16">
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-5">
+              <Link
+                href="/"
+                className="inline-flex items-center rounded-xl bg-white/95 p-3 shadow-sm ring-1 ring-white/20 transition-shadow duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
+                aria-label="Haven Flow Care home"
+              >
+                <Image
+                  src="/havenflow-logo.png"
+                  alt="Haven Flow Care"
+                  width={395}
+                  height={103}
+                  className="h-12 w-auto sm:h-14"
+                />
+              </Link>
+              <p className="mt-6 max-w-md text-[14px] font-light leading-[1.75] text-slate-muted">
+                A dedicated care service specialising in supported living across London. Established 2024.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {socialLinks.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-slate-muted transition-all duration-200 hover:border-rose/35 hover:bg-rose/[0.12] hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
+                  >
+                    <SocialIcon>{s.icon}</SocialIcon>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
 
           <div className="lg:col-span-3">
             <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-rose-light/90">
@@ -139,33 +140,34 @@ export default function Footer() {
               <li className="text-[14px] font-light text-slate-muted">London, UK</li>
             </ul>
           </div>
+          </div>
         </div>
-      </div>
 
-      <div className="relative border-t border-white/[0.08]">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row sm:px-10">
-          <p className="text-center text-[11px] tracking-[0.04em] text-slate-mid sm:text-left">
-            © 2024 Haven Flow Care. All rights reserved.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 sm:justify-end">
-            <Link
-              href="/privacy"
-              className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-mid transition-colors duration-200 hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
-            >
-              Privacy
-            </Link>
-            <Link
-              href="/cookies"
-              className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-mid transition-colors duration-200 hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
-            >
-              Cookies
-            </Link>
-            <Link
-              href="/terms"
-              className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-mid transition-colors duration-200 hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
-            >
-              Terms
-            </Link>
+        <div className="relative border-t border-white/[0.08]">
+          <div className="flex flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row sm:px-10">
+            <p className="text-center text-[11px] tracking-[0.04em] text-slate-mid sm:text-left">
+              © 2024 Haven Flow Care. All rights reserved.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 sm:justify-end">
+              <Link
+                href="/privacy"
+                className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-mid transition-colors duration-200 hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/cookies"
+                className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-mid transition-colors duration-200 hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
+              >
+                Cookies
+              </Link>
+              <Link
+                href="/terms"
+                className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-mid transition-colors duration-200 hover:text-rose-light cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-navy-darker"
+              >
+                Terms
+              </Link>
+            </div>
           </div>
         </div>
       </div>

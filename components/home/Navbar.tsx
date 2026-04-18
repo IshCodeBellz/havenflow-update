@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-3 left-0 right-0 z-50 px-4 sm:px-6 lg:top-5 lg:px-8">
       <nav
-        className="mx-auto flex h-[60px] max-w-7xl items-center justify-between rounded-2xl border border-navy/10 bg-white/90 px-4 shadow-nav backdrop-blur-md sm:h-[64px] sm:px-5 lg:h-[68px] lg:px-8"
+        className="mx-auto flex h-[60px] max-w-7xl items-center justify-between rounded-full border border-navy/10 bg-white/90 px-5 shadow-nav backdrop-blur-md sm:h-[64px] sm:px-6 lg:h-[68px] lg:px-10"
         aria-label="Primary"
       >
         <Link
@@ -84,7 +84,7 @@ export default function Navbar() {
       {open && (
         <div
           id="mobile-nav"
-          className="mx-auto mt-2 max-w-7xl rounded-2xl border border-navy/10 bg-white/95 p-1 shadow-card backdrop-blur-md lg:hidden"
+          className="mx-auto mt-2 max-w-7xl rounded-3xl border border-navy/10 bg-white/95 p-1 shadow-card backdrop-blur-md lg:hidden"
         >
           <div className="flex flex-col gap-0.5 px-3 py-4">
             {navLinks.map((l) => (
