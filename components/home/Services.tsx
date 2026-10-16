@@ -26,9 +26,14 @@ const services = [
     title: 'Education, Employment & Volunteering',
     desc: 'Supporting access to meaningful opportunities in education, work, and community engagement.',
   },
+  {
+    num: '06',
+    title: 'Transport & Community Access',
+    desc: 'Safe, accompanied travel to appointments, activities, and errands — so nothing is ever out of reach.',
+  },
   // Ofsted Nanny Services — temporarily unavailable
   // {
-  //   num: '06',
+  //   num: '07',
   //   title: 'Ofsted Nanny Services',
   //   desc: 'Professional, registered nanny placements for families across London, held to the highest care standards.',
   // },
