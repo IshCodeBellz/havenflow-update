@@ -1,22 +1,23 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import { Jost, Newsreader } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import CookieBanner from '@/components/CookieBanner'
 
-const cormorant = Cormorant_Garamond({
+const jost = Jost({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-jost',
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+/** Italic only — used for the accent words in headings and step numbers. */
+const newsreader = Newsreader({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  variable: '--font-dm-sans',
+  weight: ['400', '500'],
+  style: ['italic'],
+  variable: '--font-newsreader',
   display: 'swap',
 })
 
@@ -60,11 +61,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="font-sans antialiased bg-cream text-navy pt-[5.75rem] sm:pt-[6rem]">
+    <html lang="en-GB" className={`${jost.variable} ${newsreader.variable}`}>
+      <body className="bg-blush font-sans text-body antialiased">
         <a
           href="#main-content"
-          className="focus-ring sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2.5 focus:text-[13px] focus:font-medium focus:text-navy focus:shadow-nav"
+          className="focus-ring sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2.5 focus:text-[14px] focus:font-medium focus:text-navy focus:shadow-float"
         >
           Skip to main content
         </a>

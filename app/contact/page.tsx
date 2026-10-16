@@ -1,105 +1,133 @@
-import Link from 'next/link'
-import Navbar from '@/components/home/Navbar'
-import Footer from '@/components/home/Footer'
+import SiteShell from '@/components/layout/SiteShell'
 import PageHero from '@/components/layout/PageHero'
 import ContactForm from '@/components/contact/ContactForm'
-import SocialLinksRow from '@/components/layout/SocialLinksRow'
+import { Mail, Phone, Pin } from '@/components/ui/Icons'
 
-const contactDetails = [
-  {
-    label: 'Call us',
-    value: '07904 333 304',
-    href: 'tel:07904333304',
-    note: 'Mon–Fri, 9am–5pm',
-  },
-  {
-    label: 'Email us',
-    value: 'admin@havenflowcare.co.uk',
-    href: 'mailto:admin@havenflowcare.co.uk',
-    note: 'We respond within 24 hours',
-  },
-  {
-    label: 'Based in',
-    value: 'London, UK',
-    href: null,
-    note: 'Serving London-wide',
-  },
+const cardClass =
+  'flex items-start gap-[18px] rounded-[22px] border border-line bg-white p-6 no-underline'
+const iconClass =
+  'flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-rose-soft text-navy'
+
+/** Boroughs we currently cover — shown in place of an embedded third-party map. */
+const coverage = [
+  'Barking & Dagenham',
+  'Barnet',
+  'Brent',
+  'Camden',
+  'Croydon',
+  'Ealing',
+  'Enfield',
+  'Greenwich',
+  'Hackney',
+  'Haringey',
+  'Islington',
+  'Lambeth',
+  'Lewisham',
+  'Newham',
+  'Redbridge',
+  'Southwark',
+  'Tower Hamlets',
+  'Waltham Forest',
 ]
-
-const btnNavy =
-  'inline-flex cursor-pointer items-center justify-center rounded-lg bg-navy px-8 py-3.5 text-[12px] font-semibold uppercase tracking-[0.1em] text-white shadow-sm transition-all duration-200 hover:bg-navy-deep hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2'
 
 export default function ContactPage() {
   return (
-    <>
-      <Navbar />
-      <main id="main-content">
-        <PageHero
-          eyebrow="Get In Touch"
-          title={"We'd love to hear from you."}
-          description={
-            "Whether you're exploring care options for a loved one, looking to refer a client, or interested in joining our team — we're here to help."
-          }
-        />
+    <SiteShell>
+      <PageHero
+        eyebrow="Contact us"
+        title={
+          <>
+            We&rsquo;d love to <span className="accent text-rose-ink">hear from you.</span>
+          </>
+        }
+        lead="Exploring care options, referring a client or interested in joining the team — send us a message and we’ll respond within 24 hours."
+      />
 
-        <section className="px-6 py-16 sm:px-10 lg:py-24">
-          <div className="mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:gap-20">
-            <div className="rounded-2xl border border-cream-border bg-white p-8 shadow-card sm:p-10">
-              <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">Contact Details</p>
-              <div className="flex flex-col gap-9">
-                {contactDetails.map((d) => (
-                  <div key={d.label}>
-                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-dim">
-                      {d.label}
-                    </p>
-                    {d.href ? (
-                      <a
-                        href={d.href}
-                        className="block font-serif text-2xl font-medium leading-tight text-navy transition-colors duration-200 hover:text-rose cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 rounded-sm"
-                      >
-                        {d.value}
-                      </a>
-                    ) : (
-                      <p className="font-serif text-2xl font-medium leading-tight text-navy">{d.value}</p>
-                    )}
-                    <p className="mt-2 text-[12px] font-light text-slate-soft">{d.note}</p>
-                  </div>
-                ))}
-              </div>
+      <section className="container-hf flex flex-wrap items-start gap-8 pb-[88px]">
+        <div className="flex min-w-0 flex-[1_1_320px] flex-col gap-3.5">
+          <a href="tel:07904333304" className={cardClass}>
+            <span className={iconClass}>
+              <Phone className="h-[22px] w-[22px]" />
+            </span>
+            <span className="flex flex-col gap-1">
+              <span className="text-[14px] text-muted">Call us</span>
+              <strong className="text-[22px] font-medium text-navy">07904 333 304</strong>
+              <span className="text-[15px] text-body">Mon–Fri, 9am–5pm</span>
+            </span>
+          </a>
 
-              <div className="mt-10 border-t border-cream-border pt-10">
-                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-dim">
-                  Follow Us
-                </p>
-                <SocialLinksRow />
-              </div>
-            </div>
+          <a href="mailto:admin@havenflowcare.co.uk" className={cardClass}>
+            <span className={iconClass}>
+              <Mail className="h-[22px] w-[22px]" />
+            </span>
+            <span className="flex min-w-0 flex-col gap-1">
+              <span className="text-[14px] text-muted">Email us</span>
+              <strong className="break-words text-[19px] font-medium text-navy">
+                admin@havenflowcare.co.uk
+              </strong>
+              <span className="text-[15px] text-body">Reply within 24 hours</span>
+            </span>
+          </a>
 
-            <div className="rounded-2xl border border-cream-border bg-cream/40 p-8 shadow-card sm:p-10 lg:bg-white/80 lg:backdrop-blur-sm">
-              <ContactForm />
-            </div>
+          <div className={cardClass}>
+            <span className={iconClass}>
+              <Pin className="h-[22px] w-[22px]" />
+            </span>
+            <span className="flex flex-col gap-1">
+              <span className="text-[14px] text-muted">Based in</span>
+              <strong className="text-[22px] font-medium text-navy">London, UK</strong>
+              <span className="text-[15px] text-body">Serving London-wide</span>
+            </span>
           </div>
-        </section>
 
-        <section className="border-t border-cream-border bg-cream px-6 py-14 sm:px-10 lg:py-16">
-          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 lg:flex-row lg:items-center">
-            <div>
-              <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">For Professionals</p>
-              <h2 className="font-serif text-3xl font-medium leading-tight text-navy sm:text-[2rem]">
-                Referring a client to Haven Flow Care?
-              </h2>
-              <p className="mt-3 max-w-xl text-[15px] font-light leading-[1.85] text-slate-soft">
-                We work closely with social workers, healthcare professionals, and local authorities. Get in touch
-                and we&apos;ll make the process straightforward.
-              </p>
-            </div>
-            <Link href="mailto:admin@havenflowcare.co.uk" className={`${btnNavy} shrink-0 text-center`}>
-              Refer a Client
-            </Link>
+          <div className="on-navy flex flex-col gap-3.5 rounded-[22px] bg-navy p-7 text-on-navy">
+            <span className="eyebrow eyebrow-on-navy">For professionals</span>
+            <strong className="accent text-[26px] font-normal leading-[1.25] text-white">
+              Referring a client to Haven Flow Care?
+            </strong>
+            <span className="text-[16px] leading-[1.6]">
+              We work with social workers, healthcare professionals and local authorities. Send us
+              the referral details and we&rsquo;ll be in touch.
+            </span>
+            <a
+              href="mailto:admin@havenflowcare.co.uk?subject=Client%20referral"
+              className="btn btn-sm btn-light self-start"
+            >
+              Email a referral
+            </a>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </div>
+
+        <ContactForm />
+      </section>
+
+      <section
+        className="container-hf pb-[clamp(64px,9vw,104px)]"
+        aria-labelledby="coverage-heading"
+      >
+        <div className="flex flex-col gap-6 rounded-[32px] bg-mauve p-[clamp(28px,4vw,48px)]">
+          <div className="flex flex-col gap-3">
+            <span className="eyebrow text-rose-deep">Where we work</span>
+            <h2 id="coverage-heading" className="text-display-4 font-medium text-navy">
+              London service area
+            </h2>
+            <p className="max-w-[620px] text-[18px] leading-[1.6] text-body">
+              We deliver supported living and complex care across London and nearby regions. If your
+              borough isn&rsquo;t listed, call us — we often can still help.
+            </p>
+          </div>
+          <ul className="m-0 grid list-none gap-2.5 p-0 [grid-template-columns:repeat(auto-fit,minmax(170px,1fr))]">
+            {coverage.map((b) => (
+              <li
+                key={b}
+                className="rounded-full bg-blush px-4 py-2.5 text-center text-[15px] text-navy"
+              >
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </SiteShell>
   )
 }

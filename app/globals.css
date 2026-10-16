@@ -5,6 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Offset in-page anchors so headings clear the sticky header. */
+    scroll-padding-top: 120px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -13,42 +15,182 @@
     }
   }
 
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
   ::selection {
-    background-color: rgba(202, 155, 171, 0.35);
-    color: #0e2f54;
+    background-color: #f3dce1;
+    color: #0f3459;
   }
 
-  /* Fade-up animation for hero elements */
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Heading rhythm: Jost medium, tight tracking (see design tokens). */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
+    color: #0f3459;
+  }
+}
+
+@layer components {
+  .container-hf {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 4vw, 32px);
   }
 
-  .animate-fade-up {
-    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  /* ~104px standard section rhythm, easing down on small screens. */
+  .section-y {
+    padding-block: clamp(64px, 9vw, 104px);
   }
-  .animate-delay-100 { animation-delay: 0.1s; }
-  .animate-delay-200 { animation-delay: 0.2s; }
-  .animate-delay-300 { animation-delay: 0.3s; }
-  .animate-delay-400 { animation-delay: 0.4s; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .animate-fade-up {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #9a5262;
+  }
+
+  .eyebrow-on-navy {
+    color: #e6b9c2;
+  }
+
+  /* Newsreader italic accent used inside headings and for step numbers. */
+  .accent {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding-inline: 28px;
+    border-radius: 999px;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .btn-sm {
+    min-height: 48px;
+    padding-inline: 22px;
+    font-size: 16px;
+  }
+
+  .btn-primary {
+    background: #0f3459;
+    color: #ffffff;
+  }
+  .btn-primary:hover {
+    background: #183f67;
+  }
+
+  .btn-secondary {
+    border: 1.5px solid #0f3459;
+    color: #0f3459;
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: #f3dce1;
+  }
+
+  .btn-light {
+    background: #f3dce1;
+    color: #0f3459;
+  }
+  .btn-light:hover {
+    background: #eed3d7;
+  }
+
+  .btn-white {
+    background: #ffffff;
+    color: #0f3459;
+  }
+  .btn-white:hover {
+    background: #f3dce1;
+  }
+
+  .btn-outline-white {
+    border: 1.5px solid #ffffff;
+    color: #ffffff;
+    background: transparent;
+  }
+  .btn-outline-white:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .field-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #0f3459;
+  }
+
+  .field-control {
+    min-height: 50px;
+    width: 100%;
+    border: 1px solid #d9c9d0;
+    border-radius: 12px;
+    padding-inline: 14px;
+    font: inherit;
+    font-weight: 400;
+    color: #33445a;
+    background: #fef9fa;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .field-control::placeholder {
+    color: #8e9aa9;
+  }
+
+  .field-control:focus {
+    outline: none;
+    border-color: #0f3459;
+    box-shadow: 0 0 0 3px rgba(218, 170, 178, 0.35);
+  }
+
+  textarea.field-control {
+    padding-block: 12px;
+    resize: vertical;
   }
 }
 
 @layer utilities {
   .focus-ring {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-rose focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-rose-ink focus-visible:ring-offset-2 focus-visible:ring-offset-blush;
   }
+
+  .focus-ring-navy {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-rose-soft focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
+  }
+}
+
+/* Visible keyboard focus for every interactive element, on any background. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #9a5262;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.on-navy :where(a, button):focus-visible,
+.bg-navy :where(a, button):focus-visible {
+  outline-color: #f3dce1;
 }

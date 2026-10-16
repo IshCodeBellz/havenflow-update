@@ -1,59 +1,73 @@
-import Navbar from '@/components/home/Navbar'
-import Footer from '@/components/home/Footer'
-import PageHero from '@/components/layout/PageHero'
-import { LegalArticle, LegalBlock, LegalLead } from '@/components/layout/LegalArticle'
+import type { Metadata } from 'next'
+import SiteShell from '@/components/layout/SiteShell'
+import { LegalArticle, type LegalSection } from '@/components/layout/LegalArticle'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Haven Flow Care',
+  description:
+    'How Haven Flow Care collects, uses and protects your personal information, and the rights you have over your data.',
+  alternates: { canonical: '/privacy' },
+}
+
+const sections: LegalSection[] = [
+  {
+    id: 'information-we-collect',
+    heading: 'Information we collect',
+    body: (
+      <p>
+        We may collect contact details (such as name, email address and telephone number), enquiry
+        form details, and information you provide when applying for roles or requesting our
+        services.
+      </p>
+    ),
+  },
+  {
+    id: 'how-we-use-information',
+    heading: 'How we use information',
+    body: (
+      <p>
+        We use your information to respond to enquiries, provide care-related services, manage
+        applications, improve our website, and meet legal and regulatory obligations.
+      </p>
+    ),
+  },
+  {
+    id: 'sharing-and-storage',
+    heading: 'Sharing and storage',
+    body: (
+      <p>
+        We do not sell your data. Information may be shared with trusted service providers where
+        necessary to operate our services and only under appropriate safeguards.
+      </p>
+    ),
+  },
+  {
+    id: 'your-rights',
+    heading: 'Your rights',
+    body: (
+      <p>
+        You may request access, correction, deletion, or restriction of your personal data where
+        applicable. To exercise these rights, contact us at admin@havenflowcare.co.uk.
+      </p>
+    ),
+  },
+  {
+    id: 'contact',
+    heading: 'Contact',
+    body: <p>For privacy-related questions, email admin@havenflowcare.co.uk.</p>,
+  },
+]
 
 export default function PrivacyPage() {
   return (
-    <>
-      <Navbar />
-      <main id="main-content">
-        <PageHero
-          eyebrow="Legal"
-          title="Privacy Policy"
-          meta="Last updated: 9 April 2026"
-        />
-
-        <LegalArticle>
-          <LegalLead>
-            Haven Flow Care is committed to protecting your personal information. This page explains what we collect,
-            how we use it, and your rights.
-          </LegalLead>
-
-          <LegalBlock title="1. Information We Collect">
-            <p>
-              We may collect contact details (such as name, email address and telephone number), enquiry form details,
-              and information you provide when applying for roles or requesting our services.
-            </p>
-          </LegalBlock>
-
-          <LegalBlock title="2. How We Use Information">
-            <p>
-              We use your information to respond to enquiries, provide care-related services, manage applications,
-              improve our website, and meet legal and regulatory obligations.
-            </p>
-          </LegalBlock>
-
-          <LegalBlock title="3. Sharing and Storage">
-            <p>
-              We do not sell your data. Information may be shared with trusted service providers where necessary to
-              operate our services and only under appropriate safeguards.
-            </p>
-          </LegalBlock>
-
-          <LegalBlock title="4. Your Rights">
-            <p>
-              You may request access, correction, deletion, or restriction of your personal data where applicable. To
-              exercise these rights, contact us at admin@havenflowcare.co.uk.
-            </p>
-          </LegalBlock>
-
-          <LegalBlock title="5. Contact">
-            <p>For privacy-related questions, email admin@havenflowcare.co.uk.</p>
-          </LegalBlock>
-        </LegalArticle>
-      </main>
-      <Footer />
-    </>
+    <SiteShell>
+      <LegalArticle
+        active="privacy"
+        title="Privacy policy"
+        lastUpdated="9 April 2026"
+        intro="Haven Flow Care is committed to protecting your personal information. This page explains what we collect, how we use it, and your rights."
+        sections={sections}
+      />
+    </SiteShell>
   )
 }

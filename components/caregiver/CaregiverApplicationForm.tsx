@@ -1,28 +1,32 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  btnGhostUnderlineClass,
-  btnSubmitClass,
-  inputClass,
-  labelClass,
-  selectClass,
-  textareaClass,
-} from '@/lib/formClasses'
 
 type RoleOption = { title: string }
 
+const emptyForm = {
+  name: '',
+  email: '',
+  phone: '',
+  role: '',
+  experience: '',
+  availability: 'Full-time',
+  message: '',
+  website: '',
+}
+
+const experienceOptions = [
+  'No experience yet',
+  'Less than 1 year',
+  '1–3 years',
+  '3–5 years',
+  '5+ years',
+]
+
+const availabilityOptions = ['Full-time', 'Part-time', 'Weekends', 'Flexible']
+
 export default function CaregiverApplicationForm({ roles }: { roles: RoleOption[] }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    role: '',
-    experience: '',
-    availability: '',
-    message: '',
-    website: '',
-  })
+  const [formData, setFormData] = useState(emptyForm)
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
@@ -52,16 +56,7 @@ export default function CaregiverApplicationForm({ roles }: { roles: RoleOption[
       }
 
       setSubmitted(true)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        role: '',
-        experience: '',
-        availability: '',
-        message: '',
-        website: '',
-      })
+      setFormData(emptyForm)
     } catch {
       setSubmitError('Unable to submit right now. Please try again shortly.')
     } finally {
@@ -71,13 +66,17 @@ export default function CaregiverApplicationForm({ roles }: { roles: RoleOption[
 
   if (submitted) {
     return (
-      <div className="max-w-xl rounded-2xl border border-cream-border bg-white p-10 text-center shadow-card sm:p-12">
-        <p className="font-serif text-3xl font-medium text-navy">Application received.</p>
-        <p className="mt-4 text-[15px] font-light leading-[1.85] text-slate-soft">
-          Thank you for your interest in joining Haven Flow Care. We&apos;ll review your application and be in touch
-          within 48 hours.
+      <div className="flex min-w-0 flex-[1.6_1_500px] flex-col gap-4 rounded-[28px] border border-line bg-white p-[clamp(24px,4vw,44px)]">
+        <p className="text-[28px] font-medium text-navy">Application received.</p>
+        <p className="text-[17px] leading-[1.6]">
+          Thank you for your interest in joining Haven Flow Care. We&rsquo;ll review your
+          application and be in touch within 48 hours.
         </p>
-        <button type="button" onClick={() => setSubmitted(false)} className={`${btnGhostUnderlineClass} mt-8`}>
+        <button
+          type="button"
+          onClick={() => setSubmitted(false)}
+          className="btn btn-sm btn-secondary self-start"
+        >
           Submit another application
         </button>
       </div>
@@ -85,8 +84,15 @@ export default function CaregiverApplicationForm({ roles }: { roles: RoleOption[
   }
 
   return (
-    <form onSubmit={handleSubmit} className="relative flex max-w-2xl flex-col gap-6">
-      <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden>
+    <form
+      onSubmit={handleSubmit}
+      className="grid min-w-0 flex-[1.6_1_500px] gap-5 rounded-[28px] border border-line bg-white p-[clamp(24px,4vw,44px)] [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]"
+    >
+      <h2 className="col-[1/-1] m-0 mb-1 text-[32px] font-medium text-navy">
+        Apply to join our team
+      </h2>
+
+      <div className="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden>
         <label htmlFor="application-website">Website</label>
         <input
           id="application-website"
@@ -99,141 +105,132 @@ export default function CaregiverApplicationForm({ roles }: { roles: RoleOption[
         />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="app-name" className={labelClass}>
-            Full Name <span className="text-rose">*</span>
-          </label>
-          <input
-            id="app-name"
-            type="text"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className={inputClass}
-          />
-        </div>
-        <div>
-          <label htmlFor="app-email" className={labelClass}>
-            Email Address <span className="text-rose">*</span>
-          </label>
-          <input
-            id="app-email"
-            type="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="your@email.com"
-            className={inputClass}
-          />
-        </div>
-      </div>
+      <label className="field-label" htmlFor="app-name">
+        Full name *
+        <input
+          id="app-name"
+          type="text"
+          name="name"
+          required
+          value={formData.name}
+          onChange={handleChange}
+          className="field-control"
+        />
+      </label>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="app-phone" className={labelClass}>
-            Phone Number <span className="text-rose">*</span>
-          </label>
-          <input
-            id="app-phone"
-            type="tel"
-            name="phone"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="07xxx xxxxxx"
-            className={inputClass}
-          />
-        </div>
-        <div>
-          <label htmlFor="app-role" className={labelClass}>
-            Role of Interest <span className="text-rose">*</span>
-          </label>
-          <select
-            id="app-role"
-            name="role"
-            required
-            value={formData.role}
-            onChange={handleChange}
-            className={selectClass}
-          >
-            <option value="">Select a role…</option>
-            {roles.map((r) => (
-              <option key={r.title} value={r.title}>
-                {r.title}
-              </option>
-            ))}
-            <option value="Any / Not sure">Any / Not sure</option>
-          </select>
-        </div>
-      </div>
+      <label className="field-label" htmlFor="app-email">
+        Email address *
+        <input
+          id="app-email"
+          type="email"
+          name="email"
+          required
+          value={formData.email}
+          onChange={handleChange}
+          className="field-control"
+        />
+      </label>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="app-exp" className={labelClass}>
-            Years of Care Experience
-          </label>
-          <select
-            id="app-exp"
-            name="experience"
-            value={formData.experience}
-            onChange={handleChange}
-            className={selectClass}
-          >
-            <option value="">Select…</option>
-            <option value="No experience">No experience yet</option>
-            <option value="Less than 1 year">Less than 1 year</option>
-            <option value="1–3 years">1–3 years</option>
-            <option value="3–5 years">3–5 years</option>
-            <option value="5+ years">5+ years</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="app-avail" className={labelClass}>
-            Availability
-          </label>
-          <select
-            id="app-avail"
-            name="availability"
-            value={formData.availability}
-            onChange={handleChange}
-            className={selectClass}
-          >
-            <option value="">Select…</option>
-            <option value="Full-time">Full-time</option>
-            <option value="Part-time">Part-time</option>
-            <option value="Weekends only">Weekends only</option>
-            <option value="Flexible">Flexible</option>
-          </select>
-        </div>
-      </div>
+      <label className="field-label" htmlFor="app-phone">
+        Phone number *
+        <input
+          id="app-phone"
+          type="tel"
+          name="phone"
+          required
+          value={formData.phone}
+          onChange={handleChange}
+          className="field-control"
+        />
+      </label>
 
-      <div>
-        <label htmlFor="app-message" className={labelClass}>
-          Tell Us About Yourself <span className="text-rose">*</span>
-        </label>
+      <label className="field-label" htmlFor="app-role">
+        Role of interest *
+        <select
+          id="app-role"
+          name="role"
+          required
+          value={formData.role}
+          onChange={handleChange}
+          className="field-control"
+        >
+          <option value="">Select a role…</option>
+          {roles.map((r) => (
+            <option key={r.title} value={r.title}>
+              {r.title}
+            </option>
+          ))}
+          <option value="Any / not sure">Any / not sure</option>
+        </select>
+      </label>
+
+      <label className="field-label" htmlFor="app-exp">
+        Years of care experience
+        <select
+          id="app-exp"
+          name="experience"
+          value={formData.experience}
+          onChange={handleChange}
+          className="field-control"
+        >
+          <option value="">Select…</option>
+          {experienceOptions.map((o) => (
+            <option key={o} value={o}>
+              {o}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <fieldset className="m-0 flex flex-col gap-2.5 border-0 p-0">
+        <legend className="mb-2 p-0 text-[15px] font-medium text-navy">Availability *</legend>
+        <div className="flex flex-wrap gap-2">
+          {availabilityOptions.map((o) => (
+            <label
+              key={o}
+              className={`inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border px-3.5 text-[15px] transition-colors ${
+                formData.availability === o
+                  ? 'border-navy bg-navy text-white'
+                  : 'border-input-border bg-white text-navy hover:bg-blush-2'
+              }`}
+            >
+              <input
+                type="radio"
+                name="availability"
+                value={o}
+                checked={formData.availability === o}
+                onChange={handleChange}
+                className="h-4 w-4 accent-rose-ink"
+              />
+              {o}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <label className="field-label col-[1/-1]" htmlFor="app-message">
+        Tell us about yourself *
         <textarea
           id="app-message"
           name="message"
           required
+          rows={5}
           value={formData.message}
           onChange={handleChange}
-          rows={5}
           placeholder="Why do you want to work in care? Tell us a bit about your background and what you're looking for…"
-          className={textareaClass}
+          className="field-control"
         />
-      </div>
+      </label>
 
-      {submitError ? <p className="text-[13px] font-medium text-rose-dark">{submitError}</p> : null}
+      {submitError ? (
+        <p className="col-[1/-1] m-0 text-[15px] font-medium text-rose-ink">{submitError}</p>
+      ) : null}
 
-      <div className="flex flex-wrap items-center justify-between gap-6">
-        <p className="text-[12px] font-light text-slate-soft">We&apos;ll be in touch within 48 hours.</p>
-        <button type="submit" disabled={isSubmitting} className={btnSubmitClass}>
-          {isSubmitting ? 'Submitting...' : 'Submit Application'}
+      <div className="col-[1/-1] flex flex-wrap items-center gap-x-6 gap-y-3">
+        <button type="submit" disabled={isSubmitting} className="btn btn-primary disabled:opacity-60">
+          {isSubmitting ? 'Submitting…' : 'Submit application'}
         </button>
+        <span className="text-[15px] text-muted">We&rsquo;ll reply within 48 hours.</span>
       </div>
     </form>
   )

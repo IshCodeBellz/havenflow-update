@@ -1,158 +1,172 @@
-import Navbar from '@/components/home/Navbar'
-import Footer from '@/components/home/Footer'
-import PageHero from '@/components/layout/PageHero'
+import SiteShell from '@/components/layout/SiteShell'
+import ArchFrame from '@/components/ui/ArchFrame'
 import CaregiverApplicationForm from '@/components/caregiver/CaregiverApplicationForm'
+import { Check } from '@/components/ui/Icons'
+import { photos } from '@/lib/images'
 
-const reasons = [
+const whyHavenFlow = [
+  { title: 'Meaningful work', desc: 'Build real relationships — not just complete tasks.' },
+  { title: 'Supported from day one', desc: 'Ongoing training and a team that has your back.' },
+  { title: 'Fair pay & recognition', desc: 'Pay that reflects skilled, important work.' },
   {
-    num: '01',
-    title: 'Meaningful Work',
-    desc: "Every day you make a real difference in someone's life. This is care that goes beyond tasks — it builds genuine relationships.",
+    title: 'Room to grow',
+    desc: 'Development and progression, whether you’re new or experienced.',
   },
-  {
-    num: '02',
-    title: 'Supported From Day One',
-    desc: "We don't place you and disappear. You'll have a team behind you, ongoing training, and a management team that listens.",
-  },
-  {
-    num: '03',
-    title: 'Fair Pay & Recognition',
-    desc: 'We believe caregivers deserve to be valued. Our rates reflect the skilled, important work our team does every day.',
-  },
-  {
-    num: '04',
-    title: 'Room to Grow',
-    desc: "Whether you're starting out or experienced, we invest in your professional development and progression.",
-  },
-]
-
-const requirements = [
-  'Right to work in the UK',
-  'Enhanced DBS check (we can assist)',
-  'Reliable, compassionate, and professional',
-  'Good spoken and written English',
-  'Able to work flexibly, including some evenings or weekends',
-  'Previous care experience is an advantage but not always required',
 ]
 
 const roles = [
   {
     title: 'Supported Living Caregiver',
-    type: 'Full-time / Part-time',
-    desc: 'Provide day-to-day support to individuals in their own homes across London. No two days are the same.',
+    tag: 'Full-time or part-time',
+    tagFill: 'bg-sky',
+    desc: 'Day-to-day support for people in their own homes across London.',
   },
   {
     title: 'Independent Living Support Worker',
-    type: 'Part-time / Flexible',
-    desc: 'Help individuals build confidence and capability in daily life skills — from cooking to community engagement.',
+    tag: 'Part-time or flexible',
+    tagFill: 'bg-rose-soft',
+    desc: 'Helping people build the skills and confidence for everyday life.',
   },
-  // {
-  //   title: 'Ofsted Registered Nanny',
-  //   type: 'Full-time / Live-in / Live-out',
-  //   desc: 'Join our nanny placement pool and be matched with London families who value quality childcare.',
-  // }, // temporarily unavailable
+  // Ofsted Registered Nanny — temporarily unavailable
   {
     title: 'Night Support Worker',
-    type: 'Night shifts available',
-    desc: 'Provide overnight care and supervision for individuals who need safe, comfortable support through the night.',
+    tag: 'Night shifts',
+    tagFill: 'bg-mauve',
+    desc: 'Overnight care and supervision, so people feel safe through the night.',
   },
+]
+
+const requirements = [
+  'Right to work in the UK',
+  'Enhanced DBS check (we can help)',
+  'Reliable, compassionate and professional',
+  'Good spoken and written English',
+  'Flexibility, including some evenings or weekends',
 ]
 
 export default function CaregiverApplicationPage() {
   return (
-    <>
-      <Navbar />
-      <main id="main-content">
-        <PageHero
-          layout="split"
-          eyebrow="Join Our Team"
-          title="A career worth caring about."
-          description={
-            "We're always looking for compassionate, professional people to join the Haven Flow Care team. If you believe in person-centred care and want to make a genuine difference, we want to hear from you."
-          }
-        />
-
-        <section className="px-6 py-16 sm:px-10 lg:py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-12 max-w-xl lg:mb-14">
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">Why Haven Flow Care</p>
-              <h2 className="font-serif text-4xl font-medium leading-[1.12] text-navy lg:text-[2.65rem]">More than just a job.</h2>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-              {reasons.map((r) => (
-                <article
-                  key={r.num}
-                  className="rounded-2xl border border-cream-border bg-white p-8 shadow-card transition-all duration-200 ease-out-expo hover:border-rose/25 hover:shadow-card-hover lg:p-9"
-                >
-                  <p className="mb-4 font-serif text-[12px] font-semibold tracking-[0.14em] text-rose">{r.num}</p>
-                  <h3 className="mb-3 font-serif text-[1.25rem] font-medium leading-snug text-navy">{r.title}</h3>
-                  <p className="text-[13px] font-light leading-[1.75] text-slate-soft">{r.desc}</p>
-                </article>
-              ))}
-            </div>
+    <SiteShell>
+      <section className="container-hf flex flex-wrap items-center gap-x-12 gap-y-10 pb-[88px] pt-[clamp(40px,7vw,96px)]">
+        <div className="flex min-w-0 flex-[1.2_1_480px] flex-col gap-6">
+          <span className="eyebrow">Careers at Haven Flow</span>
+          <h1 className="text-display-2 font-medium text-navy">
+            A career worth <span className="accent text-rose-ink">caring about.</span>
+          </h1>
+          <p className="max-w-[560px] text-[19px] leading-[1.65]">
+            We&rsquo;re looking for compassionate, professional people to join a team that puts
+            relationships before routines.
+          </p>
+          <div className="flex flex-wrap gap-3.5">
+            <a href="#roles" className="btn btn-primary">
+              See open roles
+            </a>
+            <a href="#apply" className="btn btn-secondary">
+              Apply now
+            </a>
           </div>
-        </section>
+        </div>
 
-        <section className="bg-cream px-6 py-16 sm:px-10 lg:py-24">
-          <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">Open Roles</p>
-              <h2 className="mb-10 font-serif text-4xl font-medium leading-tight text-navy">Where you could fit in.</h2>
-              <div className="flex flex-col gap-4">
-                {roles.map((role) => (
-                  <div
-                    key={role.title}
-                    className="rounded-2xl border border-cream-border bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-card"
-                  >
-                    <div className="mb-2 flex flex-wrap items-start justify-between gap-3">
-                      <h3 className="font-serif text-xl font-medium leading-snug text-navy">{role.title}</h3>
-                      <span className="shrink-0 rounded-full bg-rose/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-rose-dark">
-                        {role.type}
-                      </span>
-                    </div>
-                    <p className="text-[13px] font-light leading-[1.75] text-slate-soft">{role.desc}</p>
-                  </div>
-                ))}
+        <div className="grid min-w-0 max-w-[480px] flex-[1_1_360px] grid-cols-2 gap-3.5">
+          <ArchFrame
+            photo={photos.team}
+            shape="circle"
+            fill="pink"
+            ratio="aspect-square"
+            sizes="(max-width: 768px) 44vw, 230px"
+            priority
+          />
+          <div className="flex aspect-square flex-col justify-center gap-1.5 rounded-[28px] bg-navy p-[22px]">
+            <span className="accent text-[clamp(22px,3vw,30px)] text-rose-soft">48 hrs</span>
+            <span className="text-[15px] text-on-navy">We reply to every application</span>
+          </div>
+          <div className="flex aspect-square flex-col justify-center gap-1.5 rounded-[28px] bg-sky p-[22px]">
+            <span className="text-[clamp(17px,2vw,20px)] font-medium text-navy">DBS support</span>
+            <span className="text-[15px] text-body">We can help arrange your Enhanced DBS</span>
+          </div>
+          <ArchFrame
+            photo={photos.about}
+            shape="circle"
+            fill="mauve"
+            ratio="aspect-square"
+            sizes="(max-width: 768px) 44vw, 230px"
+          />
+        </div>
+      </section>
+
+      <section className="bg-blush-2">
+        <div className="container-hf flex flex-col gap-11 py-[clamp(64px,8vw,96px)]">
+          <div className="flex max-w-[640px] flex-col gap-4">
+            <span className="eyebrow">Why Haven Flow</span>
+            <h2 className="text-display-3 font-medium text-navy">
+              Good care starts with <span className="accent text-rose-ink">a supported team.</span>
+            </h2>
+          </div>
+          <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(230px,1fr))]">
+            {whyHavenFlow.map((w) => (
+              <div key={w.title} className="flex flex-col gap-2.5 rounded-[24px] bg-blush p-[30px]">
+                <strong className="text-[21px] font-medium text-navy">{w.title}</strong>
+                <span className="text-[16px] leading-[1.6]">{w.desc}</span>
               </div>
-            </div>
-
-            <div>
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">What We&apos;re Looking For</p>
-              <h2 className="mb-6 font-serif text-4xl font-medium leading-tight text-navy">Basic requirements.</h2>
-              <p className="mb-8 text-[15px] font-light leading-[1.85] text-slate-soft">
-                We hire for character as much as experience. If you have the right values and attitude, we&apos;ll invest
-                in training and development.
-              </p>
-              <ul className="flex flex-col gap-4">
-                {requirements.map((req) => (
-                  <li key={req} className="flex items-start gap-4">
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-rose shadow-[0_0_0_3px_rgba(202,155,171,0.2)]" aria-hidden />
-                    <p className="text-[14px] font-light leading-[1.7] text-slate-soft">{req}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="px-6 py-16 sm:px-10 lg:py-24">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-12 max-w-xl">
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose">Apply Now</p>
-              <h2 className="font-serif text-4xl font-medium leading-tight text-navy lg:text-[2.65rem]">Take the first step.</h2>
-              <p className="mt-4 max-w-md text-[15px] font-light leading-[1.85] text-slate-soft">
-                Fill in the form below and we&apos;ll be in touch within 48 hours to discuss the right role for you.
-              </p>
-            </div>
+      <section
+        id="roles"
+        className="container-hf flex scroll-mt-[140px] flex-col gap-10 pb-16 pt-[clamp(64px,9vw,104px)]"
+      >
+        <div className="flex max-w-[640px] flex-col gap-4">
+          <span className="eyebrow">Open roles</span>
+          <h2 className="text-display-3 font-medium text-navy">
+            Find your place <span className="accent text-rose-ink">with us.</span>
+          </h2>
+        </div>
+        <div className="flex flex-col gap-3.5">
+          {roles.map((r) => (
+            <article
+              key={r.title}
+              className="flex flex-wrap items-center gap-x-8 gap-y-4 rounded-[24px] border border-line bg-white p-[28px_32px]"
+            >
+              <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-2">
+                <h3 className="text-[24px] font-medium text-navy">{r.title}</h3>
+                <p className="text-[16px] leading-[1.6]">{r.desc}</p>
+              </div>
+              <span
+                className={`inline-flex min-h-9 items-center rounded-full px-3.5 text-[14px] font-medium text-navy ${r.tagFill}`}
+              >
+                {r.tag}
+              </span>
+              <a href="#apply" className="btn btn-sm btn-primary">
+                Apply
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
 
-            <div className="rounded-2xl border border-cream-border bg-cream/40 p-8 shadow-card sm:p-10 lg:max-w-2xl lg:bg-white/90 lg:backdrop-blur-sm">
-              <CaregiverApplicationForm roles={roles} />
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+      <section
+        id="apply"
+        className="container-hf flex scroll-mt-[140px] flex-wrap items-start gap-12 pb-[clamp(64px,9vw,104px)] pt-10"
+      >
+        <aside className="on-navy flex min-w-0 flex-[1_1_320px] flex-col gap-5 rounded-[28px] bg-navy p-10 text-on-navy">
+          <span className="eyebrow eyebrow-on-navy">What we&rsquo;re looking for</span>
+          <ul className="m-0 flex list-none flex-col gap-3.5 p-0 text-[16px] leading-[1.5]">
+            {requirements.map((req) => (
+              <li key={req} className="flex gap-3">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-rose-on-navy" />
+                <span className="text-white">{req}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="accent m-0 border-t border-navy-line pt-[18px] text-[21px] leading-[1.4] text-rose-soft">
+            Care experience helps — but it isn&rsquo;t always required.
+          </p>
+        </aside>
+
+        <CaregiverApplicationForm roles={roles} />
+      </section>
+    </SiteShell>
   )
 }
