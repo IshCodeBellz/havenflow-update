@@ -28,26 +28,28 @@ export const metadata: Metadata = {
     'Haven Flow Care provides personalised supported living across London — built on compassion, trust, and a genuine belief in independence.',
   metadataBase: new URL('https://www.havenflowcare.co.uk'),
   openGraph: {
-    title: 'Haven Flow Care',
-    description: 'Excellence in personalised care across London.',
+    title: 'Haven Flow Care | Supported Living in London',
+    description:
+      'Personalised supported living and complex care across London — built on compassion, trust, and a genuine belief in independence.',
     url: 'https://www.havenflowcare.co.uk',
     siteName: 'Haven Flow Care',
     locale: 'en_GB',
     type: 'website',
     images: [
       {
-        url: '/havenflow-logo.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Haven Flow Care',
+        alt: 'Haven Flow Care — supported living and complex care across London.',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Haven Flow Care',
-    description: 'Excellence in personalised care across London.',
-    images: ['/havenflow-logo.png'],
+    title: 'Haven Flow Care | Supported Living in London',
+    description:
+      'Personalised supported living and complex care across London — built on compassion, trust, and a genuine belief in independence.',
+    images: ['/og-image.png'],
   },
 }
 
