@@ -60,9 +60,20 @@ const services = [
       'Workplace settling-in support',
     ],
   },
+  {
+    num: '06',
+    title: 'Transport & Community Access',
+    desc: `Safe, reliable travel support so appointments, activities, and everyday errands are never out of reach. Our caregivers accompany each person door to door, building familiarity and confidence with every journey.`,
+    includes: [
+      'Accompanied travel to medical appointments',
+      'Transport to social and community activities',
+      'Support with shopping and errand trips',
+      'Door-to-door assistance and journey planning',
+    ],
+  },
   // Ofsted Nanny Services — temporarily unavailable
   // {
-  //   num: '06',
+  //   num: '07',
   //   title: 'Ofsted Nanny Services',
   //   desc: `Professional, registered nanny placements for families across London, held to the highest care standards. All our nannies are Ofsted registered, DBS checked, and carefully matched to each family's specific needs and values.`,
   //   includes: [
@@ -77,7 +88,7 @@ const services = [
 export const metadata: Metadata = {
   title: 'Supported Living Services in London | Haven Flow Care',
   description:
-    'Explore Haven Flow Care services including personal care, independent living support, emotional wellbeing, and community-focused care in London.',
+    'Explore Haven Flow Care services in London: personal care, independent living support, emotional wellbeing, accompanied transport, and community-focused care.',
   alternates: {
     canonical: '/services',
   },
