@@ -2,98 +2,60 @@ import type { ReactNode } from 'react'
 
 type PageHeroProps = {
   eyebrow: string
-  title: string
-  description?: string
-  /** Shown under description (e.g. last updated) */
-  meta?: string
-  layout?: 'single' | 'split'
-  align?: 'left' | 'center'
+  /** Pass a <span className="accent"> for the italic accent words. */
+  title: ReactNode
+  lead?: ReactNode
+  /**
+   * `split` puts the lead alongside the heading (Services),
+   * `stacked` runs it underneath (Contact), `center` centres everything.
+   */
+  layout?: 'split' | 'stacked' | 'center'
   children?: ReactNode
 }
 
 export default function PageHero({
   eyebrow,
   title,
-  description,
-  meta,
-  layout = 'single',
-  align = 'left',
+  lead,
+  layout = 'stacked',
   children,
 }: PageHeroProps) {
-  const isCenter = align === 'center'
-  const titleBlock = (
-    <h1
-      className={`max-w-3xl font-serif text-[2.35rem] font-medium leading-[1.08] text-white sm:text-5xl lg:text-6xl ${
-        isCenter ? 'mx-auto' : ''
-      }`}
-    >
-      {title}
-    </h1>
+  const heading = (
+    <h1 className="text-display-2 font-medium text-navy">{title}</h1>
   )
 
-  return (
-    <section className="relative overflow-hidden bg-navy-deep px-6 py-16 sm:px-10 sm:py-20 lg:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-hero-mesh opacity-90" aria-hidden />
-      <div
-        className="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-rose/[0.08] blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -bottom-24 left-1/4 h-64 w-64 rounded-full bg-navy/50 blur-3xl"
-        aria-hidden
-      />
+  if (layout === 'split') {
+    return (
+      <section className="container-hf flex flex-wrap items-end gap-x-16 gap-y-8 pb-16 pt-[clamp(40px,7vw,96px)]">
+        <div className="flex min-w-0 flex-[1.3_1_520px] flex-col gap-[22px]">
+          <span className="eyebrow">{eyebrow}</span>
+          {heading}
+          {children}
+        </div>
+        {lead ? (
+          <p className="min-w-0 flex-[1_1_340px] text-[19px] leading-[1.65]">{lead}</p>
+        ) : null}
+      </section>
+    )
+  }
 
-      <div
-        className={`relative mx-auto max-w-7xl ${
-          isCenter ? 'text-center' : ''
-        }`}
-      >
-        <p
-          className={`mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-rose ${
-            isCenter ? 'mx-auto max-w-2xl' : ''
-          }`}
-        >
-          {eyebrow}
-        </p>
-
-        {layout === 'split' && description ? (
-          <div className="grid items-end gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>{titleBlock}</div>
-            <div>
-              <p className="max-w-xl text-[15px] font-light leading-[1.85] text-slate-muted lg:max-w-none">
-                {description}
-              </p>
-              {meta ? (
-                <p className="mt-5 text-[14px] font-light leading-relaxed text-slate-mid">{meta}</p>
-              ) : null}
-            </div>
-          </div>
-        ) : (
-          <>
-            <div className={isCenter ? 'mx-auto max-w-3xl' : ''}>{titleBlock}</div>
-            {description ? (
-              <p
-                className={`mt-6 max-w-2xl text-[15px] font-light leading-[1.85] text-slate-muted ${
-                  isCenter ? 'mx-auto' : ''
-                }`}
-              >
-                {description}
-              </p>
-            ) : null}
-            {meta ? (
-              <p
-                className={`mt-5 text-[14px] font-light leading-relaxed text-slate-mid ${
-                  isCenter ? 'mx-auto max-w-2xl' : ''
-                }`}
-              >
-                {meta}
-              </p>
-            ) : null}
-          </>
-        )}
-
+  if (layout === 'center') {
+    return (
+      <section className="container-hf flex flex-col items-center gap-6 pb-20 pt-[clamp(40px,7vw,96px)] text-center">
+        <span className="eyebrow">{eyebrow}</span>
+        <div className="max-w-[920px]">{heading}</div>
+        {lead ? <p className="max-w-[640px] text-[19px] leading-[1.65]">{lead}</p> : null}
         {children}
-      </div>
+      </section>
+    )
+  }
+
+  return (
+    <section className="container-hf flex flex-col gap-[22px] pb-14 pt-[clamp(40px,7vw,96px)]">
+      <span className="eyebrow">{eyebrow}</span>
+      <div className="max-w-[900px]">{heading}</div>
+      {lead ? <p className="max-w-[620px] text-[19px] leading-[1.65]">{lead}</p> : null}
+      {children}
     </section>
   )
 }

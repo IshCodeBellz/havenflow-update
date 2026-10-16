@@ -1,25 +1,24 @@
-import Navbar     from '@/components/home/Navbar'
-import Hero       from '@/components/home/Hero'
-import Strip      from '@/components/home/Strip'
+import SiteShell from '@/components/layout/SiteShell'
+import Hero from '@/components/home/Hero'
+import Stats from '@/components/home/Stats'
 import LifeWithUs from '@/components/home/LifeWithUs'
-import Services   from '@/components/home/Services'
-import About      from '@/components/home/About'
-import CtaSection from '@/components/home/CtaSection'
-import Footer     from '@/components/home/Footer'
+import Services from '@/components/home/Services'
+import HowItWorks from '@/components/home/HowItWorks'
+import WhoWeAre from '@/components/home/WhoWeAre'
+import Audiences from '@/components/home/Audiences'
+import HomeCta from '@/components/home/HomeCta'
 
 export default function HomePage() {
   return (
-    <>
-      <Navbar />
-      <main id="main-content">
-        <Hero />
-        <Strip />
-        <LifeWithUs />
-        <Services />
-        <About />
-        <CtaSection />
-      </main>
-      <Footer />
-    </>
+    <SiteShell>
+      <Hero />
+      <Stats />
+      <LifeWithUs />
+      <Services />
+      <HowItWorks />
+      <WhoWeAre />
+      <Audiences />
+      <HomeCta />
+    </SiteShell>
   )
 }

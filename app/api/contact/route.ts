@@ -6,6 +6,7 @@ type ContactPayload = {
   email?: string
   phone?: string
   enquiryType?: string
+  bestTime?: string
   message?: string
   newsletter?: boolean
   website?: string
@@ -27,6 +28,7 @@ export async function POST(request: NextRequest) {
   const email = (body.email ?? '').trim().toLowerCase()
   const phone = (body.phone ?? '').trim()
   const enquiryType = (body.enquiryType ?? '').trim()
+  const bestTime = (body.bestTime ?? '').trim()
   const message = (body.message ?? '').trim()
   const newsletterOptIn = body.newsletter === true
   const website = (body.website ?? '').trim()
@@ -65,6 +67,7 @@ export async function POST(request: NextRequest) {
   }
   if (phone) webhookBody.phone = phone
   if (enquiryType) webhookBody.enquiryType = enquiryType
+  if (bestTime) webhookBody.bestTime = bestTime
 
   const upstream = await fetch(webhookUrl, {
     method: 'POST',
