@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import CookieBanner from '@/components/CookieBanner'
+import StructuredData from '@/components/StructuredData'
 
 const jost = Jost({
   subsets: ['latin'],
@@ -26,11 +27,6 @@ export const metadata: Metadata = {
   description:
     'Haven Flow Care provides personalised supported living across London — built on compassion, trust, and a genuine belief in independence.',
   metadataBase: new URL('https://www.havenflowcare.co.uk'),
-  icons: {
-    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
-    apple: [{ url: '/apple-icon.svg', type: 'image/svg+xml' }],
-    shortcut: ['/icon.svg'],
-  },
   openGraph: {
     title: 'Haven Flow Care',
     description: 'Excellence in personalised care across London.',
@@ -71,6 +67,7 @@ export default function RootLayout({
         </a>
         {children}
         <CookieBanner />
+        <StructuredData />
         <Analytics />
         <SpeedInsights />
       </body>
