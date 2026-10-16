@@ -7,6 +7,7 @@
 # build / Next.js
 /.next/
 /out/
+*.tsbuildinfo
 
 # env (keep .env.example)
 .env
